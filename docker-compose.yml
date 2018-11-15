@@ -1,3 +1,8 @@
 version: '3'
 
 services:
+  java:
+    image: "maven:3.6-jdk-8"
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./java/:/app

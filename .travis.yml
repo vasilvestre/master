@@ -1,0 +1,8 @@
+language: java
+
+before_script:
+  - cd java/chess/
+  - mvn package -DskipTests
+
+script:
+  - java -cp target/chess-1.0-SNAPSHOT.jar catho.App
