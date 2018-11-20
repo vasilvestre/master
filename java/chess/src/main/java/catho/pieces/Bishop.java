@@ -10,11 +10,8 @@ public abstract class Bishop extends Piece {
 
     @Override
     public boolean canMove(Coordinate fromCoordinate, Coordinate toCoordinate) {
-        Integer distanceBetweenVertical;
-        Integer distanceBetweenHorizontal;
-
-        distanceBetweenVertical = toCoordinate.getVerticalAxis() - fromCoordinate.getVerticalAxis();
-        distanceBetweenHorizontal = Integer.parseInt(toCoordinate.getHorizontalAxis()) - Integer.parseInt(fromCoordinate.getHorizontalAxis());
+        Integer distanceBetweenVertical = toCoordinate.getVerticalAxis() - fromCoordinate.getVerticalAxis();
+        Integer distanceBetweenHorizontal = Integer.parseInt(toCoordinate.getHorizontalAxis()) - Integer.parseInt(fromCoordinate.getHorizontalAxis());
 
         if (moveToDifferentPosition(fromCoordinate, toCoordinate)
                 && distanceBetweenVertical.equals(distanceBetweenHorizontal)
