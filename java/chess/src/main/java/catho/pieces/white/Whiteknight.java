@@ -1,5 +1,6 @@
 package catho.pieces.white;
 
+import catho.Coordinate;
 import catho.Piece;
 import catho.pieces.Knight;
 
@@ -9,4 +10,5 @@ public class Whiteknight extends Knight {
     public Whiteknight(String name, String representation) {
         super(name, representation, ++instanceNumber);
     }
+
 }

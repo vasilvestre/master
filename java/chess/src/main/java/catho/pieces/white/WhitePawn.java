@@ -1,6 +1,6 @@
 package catho.pieces.white;
 
-import catho.Piece;
+import catho.Coordinate;
 import catho.pieces.Pawn;
 
 public class WhitePawn extends Pawn {
@@ -8,5 +8,15 @@ public class WhitePawn extends Pawn {
 
     public WhitePawn(String name, String representation) {
         super(name, representation, ++instanceNumber);
+    }
+
+    @Override
+    public boolean canMove(Coordinate fromCoordinate, Coordinate toCoordinate) {
+        if (moveToDifferentPosition(fromCoordinate, toCoordinate)
+                && fromCoordinate.getHorizontalAxis().equals(toCoordinate.getHorizontalAxis())
+                && fromCoordinate.getVerticalAxis() < toCoordinate.getVerticalAxis()) {
+            return true;
+        }
+        return false;
     }
 }

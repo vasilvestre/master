@@ -1,5 +1,6 @@
 package catho.pieces.white;
 
+import catho.Coordinate;
 import catho.Piece;
 import catho.pieces.Rook;
 
@@ -9,4 +10,5 @@ public class WhiteRook extends Rook {
     public WhiteRook(String name, String representation) {
         super(name, representation, ++instanceNumber);
     }
+
 }

@@ -6,5 +6,6 @@ public class App {
         game.printBoard();
         //game.listPieces();
         game.move("WP1","A3");
+        game.printBoard();
     }
 }

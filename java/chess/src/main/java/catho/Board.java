@@ -1,22 +1,24 @@
 package catho;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Board {
-    private LinkedHashMap<String, Square> board; // should have been coordonate then map of square and piece
+    private ArrayList<Coordinate> coordinates;
     private String[] letters = new String[]{"A", "B", "C", "D", "E", "F", "G", "H"};
     private Integer[] numbers = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8};
 
     public Board() {
-        this.board = createBoard();
+        this.coordinates = createBoard();
     }
 
-    private LinkedHashMap<String, Square> createBoard() {
-        LinkedHashMap<String, Square> tmpBoard = new LinkedHashMap<>();
+    private ArrayList<Coordinate> createBoard() {
+        ArrayList<Coordinate> tmpBoard = new ArrayList<>();
         for (String letter : letters) {
             for (int number : numbers) {
-                String key = letter + number;
-                tmpBoard.put(key, new Square(key));
+                Coordinate newCoordinate = new Coordinate(letter,number);
+                tmpBoard.add(newCoordinate);
             }
         }
         return tmpBoard;
@@ -31,7 +33,11 @@ public class Board {
             StringBuilder output = new StringBuilder().append(number).append("|");
             for (String letter : letters) {
                 String key = letter + number;
-                output.append(board.get(key).toString()).append("|");
+                output.append(
+                        coordinates.stream().filter(
+                                x -> x.toString().equals(key)
+                        ).findFirst().get().getRepresentation()
+                ).append("|");
             }
             System.out.println(output);
             System.out.println(" ---------------------------------");
@@ -41,27 +47,18 @@ public class Board {
 
     public ArrayList<Piece> getPieces() {
         ArrayList<Piece> pieces = new ArrayList<>();
-        for (Square square : board.values()) {
-            if (square.piece != null) {
-                pieces.add(square.piece);
+        for (Coordinate coordinate : coordinates) {
+            if (coordinate.piece != null) {
+                pieces.add(coordinate.piece);
             }
         }
         return pieces;
     }
 
-    public boolean move(String pieceName, String to) {
-        Square actualSquare = null;
-        Square newSquare = board.get(to);
-        for (Square square : board.values()) {
-            if (square.piece != null && square.piece.toString().equals(pieceName)) {
-                actualSquare = square;
-            }
-        }
-        if (actualSquare == null) {
-            return false;
-        }
-        Piece piece = actualSquare.piece;
-
-        return true;
+    public void move(String pieceName, String to) {
+        Coordinate fromCoordinate = coordinates.stream().filter(coordinate -> coordinate.piece.toString().equals(pieceName)).findFirst().get();
+        Piece piece = fromCoordinate.piece;
+        Coordinate toCoordinate = coordinates.stream().filter(coordinate -> coordinate.toString().equals(to)).findFirst().get();
+        piece.move(fromCoordinate, toCoordinate);
     }
 }

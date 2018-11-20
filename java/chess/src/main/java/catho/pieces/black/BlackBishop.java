@@ -1,5 +1,6 @@
 package catho.pieces.black;
 
+import catho.Coordinate;
 import catho.Piece;
 
 public class BlackBishop extends Piece {

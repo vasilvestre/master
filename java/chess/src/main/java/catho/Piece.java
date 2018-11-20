@@ -19,4 +19,20 @@ public abstract class Piece {
     public String getRepresentation() {
         return representation;
     }
+
+    public void move(Coordinate fromCoordinate, Coordinate toCoordinate) {
+        if (canMove(fromCoordinate, toCoordinate)) {
+            fromCoordinate.piece = null;
+            toCoordinate.piece = this;
+        }
+    }
+
+    public abstract boolean canMove(Coordinate fromCoordinate, Coordinate toCoordinate);
+
+    public boolean moveToDifferentPosition(Coordinate fromCoordinate, Coordinate toCoordinate) {
+        if (fromCoordinate.equals(toCoordinate)) {
+            return false;
+        }
+        return true;
+    }
 }

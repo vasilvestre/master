@@ -1,5 +1,6 @@
 package catho.pieces.black;
 
+import catho.Coordinate;
 import catho.Piece;
 import catho.pieces.Queen;
 

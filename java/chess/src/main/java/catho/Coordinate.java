@@ -5,10 +5,19 @@ import catho.pieces.white.*;
 
 import java.util.Arrays;
 
-public class Square {
-    public Piece piece;
+public class Coordinate {
+    private String horizontalAxis;
+    private Integer verticalAxis;
 
-    public Square(String coordinateName) {
+    public Piece piece = null;
+
+    public Coordinate(String horizontalAxis, Integer verticalAxis) {
+        this.horizontalAxis = horizontalAxis;
+        this.verticalAxis = verticalAxis;
+        addPiece(horizontalAxis + verticalAxis);
+    }
+
+    private void addPiece(String coordinateName) {
         String[] numbersWithPiece = {"1", "2", "7", "8"};
         // We verify that the coordinate can have a piece on it
         if (Arrays.asList(numbersWithPiece).contains(coordinateName.substring(1))) {
@@ -59,12 +68,28 @@ public class Square {
         }
     }
 
-    @Override
-    public String toString() {
+    public String getRepresentation() {
         String contain = "  ";
         if (piece != null) {
             return contain + piece.getRepresentation();
         }
         return contain + " ";
+    }
+
+    public String getHorizontalAxis() {
+        return horizontalAxis;
+    }
+
+    public Integer getVerticalAxis() {
+        return verticalAxis;
+    }
+
+    @Override
+    public String toString() {
+        return horizontalAxis + verticalAxis;
+    }
+
+    public Integer toInteger() {
+        return Integer.parseInt(horizontalAxis + verticalAxis);
     }
 }

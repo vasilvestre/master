@@ -1,5 +1,6 @@
 package catho.pieces.white;
 
+import catho.Coordinate;
 import catho.pieces.Bishop;
 
 public class WhiteBishop extends Bishop {
