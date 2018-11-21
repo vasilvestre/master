@@ -11,6 +11,10 @@ class Game {
         this.sp = new Player("PAUL", "black");
     }
 
+    public Board getBoard() {
+        return board;
+    }
+
     public Player getFp() {
         return fp;
     }
