@@ -4,8 +4,8 @@ import catho.Coordinate;
 import catho.Piece;
 
 public abstract class Rook extends Piece {
-    public Rook(String name, String representation, Integer number) {
-        super(name, representation, number);
+    public Rook(String name, String representation, Integer number, String color) {
+        super(name, representation, number, color);
     }
 
     @Override

@@ -6,6 +6,6 @@ public class BlackBishop extends Bishop {
     private static Integer instanceNumber = 0;
 
     public BlackBishop(String name, String representation) {
-        super(name, representation, ++instanceNumber);
+        super(name, representation, ++instanceNumber, "black");
     }
 }

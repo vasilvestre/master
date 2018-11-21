@@ -3,6 +3,7 @@ package catho;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 
 public class Board {
     private ArrayList<Coordinate> coordinates;
@@ -60,5 +61,28 @@ public class Board {
         Piece piece = fromCoordinate.piece;
         Coordinate toCoordinate = coordinates.stream().filter(coordinate -> coordinate.toString().equals(to)).findFirst().get();
         piece.move(fromCoordinate, toCoordinate);
+    }
+
+    public boolean move(String pieceName, String to, String color) {
+        Coordinate fromCoordinate = null;
+        for (Coordinate coordinate: coordinates) {
+            if (coordinate.piece != null) {
+                if (coordinate.piece.toString().equals(pieceName)) {
+                    fromCoordinate = coordinate;
+                    break;
+                }
+            }
+        }
+        if (fromCoordinate == null) {
+            System.out.println("Pas de pièce à cet emplacement");
+            return false;
+        }
+        Coordinate toCoordinate = coordinates.stream().filter(coordinate -> coordinate.toString().equals(to)).findFirst().get();
+        Piece piece = fromCoordinate.piece;
+        if (!piece.getColor().equals(color)) {
+            System.out.println("Cette pièce ne vous appartient pas !");
+            return false;
+        }
+        return piece.move(fromCoordinate, toCoordinate);
     }
 }

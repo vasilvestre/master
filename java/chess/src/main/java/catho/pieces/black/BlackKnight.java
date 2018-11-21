@@ -4,10 +4,10 @@ import catho.Coordinate;
 import catho.Piece;
 import catho.pieces.Knight;
 
-public class BlackKnight extends Knight {
+public class BlackKnight extends Knight   {
     private static Integer instanceNumber = 0;
 
     public BlackKnight(String name, String representation) {
-        super(name, representation, ++instanceNumber);
+        super(name, representation, ++instanceNumber, "black");
     }
 }

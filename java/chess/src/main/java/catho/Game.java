@@ -4,6 +4,7 @@ class Game {
     private Board board = new Board();
     private Player fp; // First player
     private Player sp; // Second player
+    public boolean finished = false;
 
     Game() {
         this.fp = new Player("JEAN", "white");
@@ -32,9 +33,13 @@ class Game {
         board.move(pieceName, to);
     }
 
+    public boolean move(String pieceName, String to, String color) {
+        return board.move(pieceName, to, color);
+    }
+
     public class Player {
         private String name;
-        private String color;
+        public String color;
 
         Player(String name, String color) {
             this.name = name;
