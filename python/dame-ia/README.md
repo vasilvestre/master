@@ -1,5 +1,7 @@
 # Dame - IA
 
+Checkers game project for courses with modified rules build to implement IA.
+
 Based on [Namoury notation](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Nummeringdambord.jpg/220px-Nummeringdambord.jpg).
 
 | .  |  1 | .  |  2 |  .  |  3 |  .  | 4  |  .  | 5  |
