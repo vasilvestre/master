@@ -6,6 +6,7 @@ logger = logging.getLogger()
 
 class Board(object):
     cases = []
+    victory = False
 
     def __init__(self):
         self.init_board()
@@ -64,9 +65,16 @@ class Board(object):
             to_case.color = ''
             self.find_case(next_position).color = from_case.color
             from_case.color = ''
+
         elif self.allowed_move(from_case, to_case):
             to_case.color = from_case.color
             from_case.color = ''
+            if to_case.color == 'white' and to_case.position in [0,1,2,3,4]:
+                self.victory= True
+                logger.info("Joueur blanc a gagné")
+            elif to_case.color == 'black' and to_case.position in [45,46,47,48,49]:
+                self.victory= True
+                logger.info("Joueur noir a gagné")
         else:
             logger.error("Déplacement impossible")
             
