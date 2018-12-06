@@ -64,14 +64,13 @@ class Board(object):
             to_case.color = ''
             self.find_case(next_position).color = from_case.color
             from_case.color = ''
-            return self
-        if self.allowed_move(from_case, to_case):
+        elif self.allowed_move(from_case, to_case):
             to_case.color = from_case.color
             from_case.color = ''
-            return self
         else:
             logger.error("Déplacement impossible")
-            return self
+            
+        return self
 
     def allowed_move(self, from_case, to_case):
         possible_moves = self.possible_move(from_case)
