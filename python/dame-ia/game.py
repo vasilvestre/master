@@ -22,6 +22,9 @@ while not board.victory:
 
     board.make_move(from_position, to_position)
     board.print_board()
+    if board.victory:
+        print("White player win")
+        exit()
 
     # print("Black player at you")
     # valid_move = False
@@ -35,7 +38,7 @@ while not board.victory:
     # board.make_move(from_position, to_position)
     # board.print_board()
 
-    print("Black player at you")
+    print("Black player at you (IA)")
     valid_move = False
     while not valid_move:
         # TODO guess best move with IA
@@ -48,3 +51,6 @@ while not board.victory:
 
     board.make_move(from_position, to_position)
     board.print_board()
+    if board.victory:
+        print("Black player win")
+        exit()
