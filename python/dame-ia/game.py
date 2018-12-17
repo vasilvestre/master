@@ -11,6 +11,10 @@ from_position = 0
 to_position = 0
 
 while not board.victory:
+    possibles_moves = board.possible_moves()
+    for pos in possibles_moves:
+        print(pos , possibles_moves.get(pos))
+
     print("White player at you")
     valid_move = False
     while not valid_move:
@@ -44,7 +48,7 @@ while not board.victory:
         # TODO guess best move with IA
         from_position = int(input("Choose from case number"))
         to_position = int(input("Choose destination case number"))
-        valid_move = board.valid_move(from_position, to_position, black_player)
+        # valid_move = board.valid_move(from_position, to_position, black_player)
         # if not valid_move:
         #     print("Invalid move")
         # TODO : IA shouldn't try invalid move
