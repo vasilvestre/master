@@ -77,7 +77,7 @@ class Board(object):
                 logger.info("Joueur noir a gagné")
         else:
             logger.error("Déplacement impossible")
-            
+
         return self
 
     def allowed_move(self, from_case, to_case):
@@ -106,6 +106,14 @@ class Board(object):
 
         logger.critical('Cas non géré!!!')
         exit(1)
+
+    def valid_move(self, from_position, to_position, player):
+        from_case = self.find_case(from_position)
+        to_case = self.find_case(to_position)
+        if from_case.color != player.color:
+            return False
+
+        return self.allowed_move(from_case, to_case)
 
     def next_position(self, from_case, to_case):
         possible_moves = self.possible_move(from_case)
