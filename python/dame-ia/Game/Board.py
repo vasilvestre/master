@@ -1,4 +1,5 @@
 from Game.Case import Case
+from Game.Player import Player
 import logging
 
 logger = logging.getLogger()
@@ -124,6 +125,8 @@ class Board(object):
             else:
                 index = 3
         possible_moves = self.possible_move(to_case)
+        if to_case.position in [5, 15, 25, 35, 45, 6, 16, 26, 36, 46]:
+            return from_case.position
         return possible_moves[index]
 
     def can_eat_pion(self, from_case, to_case):
@@ -132,6 +135,16 @@ class Board(object):
         if from_case.color == 'black' and to_case.color == 'white':
             return True
         return False
+
+    def possible_moves(self):
+        moves = {}
+        player = Player('black')
+        for case in self.cases:
+            if case.color == 'black':
+                for move in self.possible_move(case):
+                    if self.valid_move(case.position, move, player):
+                        moves[case.position] = move
+        return moves
 
     def possible_move(self, from_case):
         switcher = {
