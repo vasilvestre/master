@@ -1,0 +1,4 @@
+[submodule "c-cpp"]
+	url = https://github.com/vasilvestre/MASTER-EXOS-C-CPP
+[submodule "python/checkers-IA"]
+	url = https://github.com/vasilvestre/checkers-IA
