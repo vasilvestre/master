@@ -15,6 +15,8 @@ interface AdherentInterface<T, Id extends Serializable> {
 
     public List<T> findAll();
 
+    public List<T> findAllOrderBy(String field, String order);
+
     public void deleteAll();
 
 }

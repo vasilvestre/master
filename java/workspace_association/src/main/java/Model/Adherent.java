@@ -18,7 +18,7 @@ public class Adherent implements Serializable {
     @Column(name = "lastName", nullable = false)
     private String lastName;
     @Column(name = "dateSubscription", nullable = false)
-    private String dateSubscription;
+    private String dateSubscription = null;
     @Column(name = "dateBirth", nullable = false)
     private String dateBirth;
     @Column(name = "email", nullable = false)
