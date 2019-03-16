@@ -26,20 +26,20 @@ INSERT INTO `adherent` (`id`, `firstName`, `lastName`, `dateSubscription`, `date
 
 ### Todolist
 * Couche DAO
-    * [ ] Configuration hibernate
-    * [ ] Création des DAO
+    * [x] Configuration hibernate
+    * [x] Création des DAO
 * Couche tests = classe main
-    * [ ] Ajout d'un adhérent
-    * [ ] Modification d'un adhérent
-    * [ ] Suppression d'un adhérent
-    * [ ] Récupération de tous les adhérents
-    * [ ] Récupération de tous les adhérents triés selon leur date d'inscription
+    * [x] Ajout d'un adhérent
+    * [x] Modification d'un adhérent
+    * [x] Suppression d'un adhérent
+    * [x] Récupération de tous les adhérents
+    * [x] Récupération de tous les adhérents triés selon leur date d'inscription
 * Couche services
     * Créer un package Service avec
-    * [ ] L'ajout d'un adhérent
-    * [ ] La modification d'un adhérent
-    * [ ] La suppression d'un adhérent
-    * [ ] Lister tous les adhérents
+    * [x] L'ajout d'un adhérent
+    * [x] La modification d'un adhérent
+    * [x] La suppression d'un adhérent
+    * [x] Lister tous les adhérents
 * Couche présentation
     * [ ] Une page d'accueil
     * [ ] Une page d'inscription

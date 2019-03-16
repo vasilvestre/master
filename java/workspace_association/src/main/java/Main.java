@@ -1,47 +1,37 @@
-import org.hibernate.HibernateException;
-import org.hibernate.Metamodel;
-import org.hibernate.query.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import javax.persistence.metamodel.EntityType;
-
-import java.util.Map;
+import Model.Adherent;
+import Service.AdherentService;
 
 public class Main {
-    private static final SessionFactory ourSessionFactory;
-
-    static {
-        try {
-            Configuration configuration = new Configuration();
-            configuration.configure();
-
-            ourSessionFactory = configuration.buildSessionFactory();
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-
-    public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
-    }
-
-    public static void main(final String[] args) throws Exception {
-        final Session session = getSession();
-        try {
-            System.out.println("querying all the managed entities...");
-            final Metamodel metamodel = session.getSessionFactory().getMetamodel();
-            for (EntityType<?> entityType : metamodel.getEntities()) {
-                final String entityName = entityType.getName();
-                final Query query = session.createQuery("from " + entityName);
-                System.out.println("executing: " + query.getQueryString());
-                for (Object o : query.list()) {
-                    System.out.println("  " + o);
-                }
-            }
-        } finally {
-            session.close();
-        }
+    /**
+     * Main method of program.
+     *
+     * @param args Arguments to main
+     */
+    public static void main(final String[] args) {
+        AdherentService adherentService = new AdherentService();
+        System.out.println(adherentService.findAll());
+        Adherent adherent1 = new Adherent("jeannine", "paulette", "2019/03/15", "vsil@truc.dlf");
+        System.out.println("Ajout d'un adherent");
+        adherentService.persist(adherent1);
+        System.out.println(adherentService.findAll());
+        System.out.println("Modification de l'adhérent");
+        adherent1.setLastName("bob");
+        adherentService.update(adherent1);
+        System.out.println(adherentService.findAll());
+        adherentService.delete(adherent1.getId());
+        System.out.println("Création de 3 adhérents");
+        Adherent adherent2 = new Adherent("jean", "paul", "2018/03/13","2019/03/15", "vsil@truc.dlf");
+        Adherent adherent3 = new Adherent("jeanne", "pol", "2017/03/14","2019/03/15", "vsil@truc.dlf");
+        Adherent adherent4 = new Adherent("janne", "popol", "2019/03/14","2019/03/15", "vsil@truc.dlf");
+        adherentService.persist(adherent2);
+        adherentService.persist(adherent3);
+        adherentService.persist(adherent4);
+        System.out.println("Listing des adhérents");
+        System.out.println(adherentService.findAll());
+        System.out.println("Listing des adhérents par date d'inscription");
+        System.out.println(adherentService.findAllOrderBy("dateSubscription","ASC"));
+        adherentService.delete(adherent2.getId());
+        adherentService.delete(adherent3.getId());
+        adherentService.delete(adherent4.getId());
     }
 }

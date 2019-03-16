@@ -3,11 +3,13 @@ version: '3.1'
 
 services:
   db:
-    image: postgres:11.2
+    image: mysql:8.0.15
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      POSTGRES_DB: workspace
-      POSTGRES_USER: workspace
-      POSTGRES_PASSWORD: workspace
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: association
+      MYSQL_USER: workspace
+      MYSQL_PASSWORD: workspace
     ports:
-      - "5432:5432"
+      - "3306:3306"
