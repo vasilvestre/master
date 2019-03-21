@@ -1,9 +1,9 @@
 ## Workspace association
 
 ### Objectifs 
-* [ ] Installer un environnement J2EE et BDD
-* [ ] Mise en place d'une architecture 3 tiers
-* [ ] Mise en place d'hivernate et de JSTL via des JSP
+* [x] Installer un environnement J2EE et BDD
+* [x] Mise en place d'une architecture 3 tiers
+* [x] Mise en place d'hivernate et de JSTL via des JSP
 * [ ] Application des principes de développement (javadoc, commentaires)
 
 ### Etapes
