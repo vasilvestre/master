@@ -140,7 +140,7 @@ public class Adherent implements Serializable {
     @PrePersist
     protected void prePersist() {
         if (this.dateSubscription == null) {
-            String pattern = "dd-MM-yyyy";
+            String pattern = "dd/MM/yy";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             this.dateSubscription = simpleDateFormat.format(new Date());
         }

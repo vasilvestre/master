@@ -41,7 +41,7 @@ INSERT INTO `adherent` (`id`, `firstName`, `lastName`, `dateSubscription`, `date
     * [x] La suppression d'un adhérent
     * [x] Lister tous les adhérents
 * Couche présentation
-    * [ ] Une page d'accueil
-    * [ ] Une page d'inscription
-    * [ ] Une page pour lister tous les adhérents et pouvoir les trier selon leur date d’inscription dans l’ordre croissant et décroissant
-    * [ ] De la page précédente, on peut accéder à une page pour modifier un adhérent et pouvoir même le supprimer.
+    * [x] Une page d'accueil
+    * [x] Une page d'inscription
+    * [x] Une page pour lister tous les adhérents et pouvoir les trier selon leur date d’inscription dans l’ordre croissant et décroissant
+    * [x] De la page précédente, on peut accéder à une page pour modifier un adhérent et pouvoir même le supprimer.

@@ -24,14 +24,14 @@ public class AdherentService {
         adherentDao.closeCurrentSessionwithTransaction();
     }
 
-    public Adherent findById(String id) {
+    public Adherent findById(Integer id) {
         adherentDao.openCurrentSession();
         Adherent adherent = (Adherent) adherentDao.findById(id);
         adherentDao.closeCurrentSession();
         return adherent;
     }
 
-    public void delete(int id) {
+    public void delete(Integer id) {
         adherentDao.openCurrentSessionwithTransaction();
         Adherent adherent = (Adherent) adherentDao.findById(id);
         adherentDao.delete(adherent);
