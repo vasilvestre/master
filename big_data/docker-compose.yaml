@@ -1,0 +1,54 @@
+version: "3.5"
+
+services:
+  grafana:
+    image: grafana/grafana
+    volumes:
+    - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+    - VIRTUAL_HOST=grafana.loc
+    - GF_SERVER_ROOT_URL=http://grafana.loc
+    - GF_DATABASE_NAME=grafana
+    - GF_DATABASE_USER=grafana
+    - GF_DATABASE_PASSWORD=grafana
+    - GF_DATABASE_TYPE=postgres
+    - GF_DATABASE_HOST=grafana_db:5432
+    - GF_DATABASE_SSL_MODE=disable
+    - GF_SESSION_PROVIDER=postgres
+    - GF_SESSION_PROVIDER_CONFIG=user=grafana password=grafana host=grafana_db port=5432 dbname=grafana sslmode=disable
+    - GF_SERVER_ROUTER_LOGGING=true
+    - GF_LOG_CONSOLE_FORMAT=json
+    - GF_LOG_FILTERS=alerting.notifier:debug,alerting.notifier.slack:debug,auth:debug
+    - GF_AUTH_TOKEN_ROTATION_INTERVAL_MINUTES=2
+    ports:
+    - 3000:3000
+    depends_on:
+    - grafana_db
+
+  grafana_db:
+    image: postgres
+    environment:
+      POSTGRES_DATABASE: grafana
+      POSTGRES_USER: grafana
+      POSTGRES_PASSWORD: grafana
+    ports:
+    - 6100:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d grafana -U grafana"]
+      timeout: 10s
+      retries: 10
+
+  data_db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: data
+      MYSQL_USER: data
+      MYSQL_PASSWORD: data
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --innodb_monitor_enable=all, --max-connections=1001]
+    ports:
+    - 6101:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
