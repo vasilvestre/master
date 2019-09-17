@@ -1,0 +1,5 @@
+https://opendata.lillemetropole.fr/explore/dataset/indemnites-des-elus-metropolitains/information/
+
+Text to BDD
+([a-z|é|ë|ç|-|'|-| |'|è|-|ï])+ => '$0'
+' => ''
